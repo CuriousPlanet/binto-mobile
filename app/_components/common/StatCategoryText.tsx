@@ -1,11 +1,17 @@
 import { View, Text, StyleProp, TextStyle } from 'react-native';
 import React, { PropsWithChildren } from 'react';
+import { merge } from 'lodash';
 
 interface StatCategoryTextProps extends PropsWithChildren {
   title: string;
+  style?: StyleProp<TextStyle>;
 }
 
-const StatCategoryText = ({ title, children }: StatCategoryTextProps) => {
+const StatCategoryText = ({
+  title,
+  style,
+  children,
+}: StatCategoryTextProps) => {
   const titleStyle: StyleProp<TextStyle> = {
     color: '#B1B1B1',
     fontSize: 10,
@@ -21,7 +27,7 @@ const StatCategoryText = ({ title, children }: StatCategoryTextProps) => {
   };
 
   return (
-    <View>
+    <View style={style}>
       <Text style={titleStyle}>{title.toUpperCase()}</Text>
       {typeof children === 'string' ? (
         <Text style={valueTextStyle}>{children}</Text>

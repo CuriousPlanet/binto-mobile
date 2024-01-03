@@ -10,7 +10,7 @@ interface ProgressProps {
 const Progress = ({ progress, style }: ProgressProps) => {
   const progressBarStyle: StyleProp<ViewStyle> = {
     borderRadius: 9999,
-    width: 200,
+    minWidth: 64,
     height: 12,
     backgroundColor: '#F3F3F3',
   };

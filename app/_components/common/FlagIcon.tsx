@@ -5,7 +5,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 
 interface FlagIconProps extends Omit<ImageProps, 'source'> {
   country: string;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 const FlagIcon = ({ country, style, ...props }: FlagIconProps) => {
