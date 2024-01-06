@@ -1,8 +1,8 @@
 import { ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
-import FlagIcon from './FlagIcon';
-import IconButton from './Buttons/IconButton';
-import { Ionicons } from '@expo/vector-icons';
+import FlagIcon from '../../common/FlagIcon';
+import IconButton from '../../common/Buttons/IconButton';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface VerticalCountrySelector {
   countries: string[];
@@ -31,6 +31,7 @@ const VerticalCountrySelector = ({ countries }: VerticalCountrySelector) => {
       <ScrollView horizontal>
         {countries.map((country, i) => (
           <View
+            key={i}
             style={{
               alignItems: 'center',
               flexDirection: 'row',
@@ -45,16 +46,16 @@ const VerticalCountrySelector = ({ countries }: VerticalCountrySelector) => {
                 width: 32,
                 height: 32,
                 opacity: activeFlag === i ? 1 : 0.25,
-                borderWidth: activeFlag === i ? 0 : 4,
-                borderColor: 'white',
+                borderWidth: activeFlag === i ? 1 : 4,
+                borderColor: activeFlag === i ? '#eee' : 'white',
               }}
               country={country}
             />
             {Boolean(countries.length !== i + 1) && (
-              <Ionicons
+              <MaterialCommunityIcons
                 style={{ marginLeft: 4, marginRight: 4 }}
                 color="#CDCDCD"
-                name="arrow-back"
+                name="arrow-left"
               />
             )}
           </View>
@@ -62,7 +63,7 @@ const VerticalCountrySelector = ({ countries }: VerticalCountrySelector) => {
       </ScrollView>
 
       <IconButton
-        icon="add"
+        icon="plus"
         style={{
           position: 'absolute',
           right: 0,

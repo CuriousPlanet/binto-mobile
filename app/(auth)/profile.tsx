@@ -1,15 +1,21 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, ScrollView, Pressable } from 'react-native';
+import React, { PropsWithChildren, useRef } from 'react';
 import Avatar from '../_components/common/Avatar';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import StatCategoryText from '../_components/common/StatCategoryText';
 import Progress from '../_components/common/Progress';
-import VerticalCountrySelector from '../_components/common/VerticalCountrySelector';
+import VerticalCountrySelector from '../_components/ui/profile/VerticalCountrySelector';
 import Container from '../_components/common/Container';
+import IconButton from '../_components/common/Buttons/IconButton';
+import ProfilePostEntry from '../_components/ui/profile/ProfilePostEntry';
+import BaseBottomSheetModal from '../_components/common/Modals/BaseBottomSheetModal';
+import { BottomSheetModal, BottomSheetModalProps } from '@gorhom/bottom-sheet';
+import EditorModal from '../_components/common/Modals/EditorModal';
 
-const profile = () => {
+const Profile = () => {
+  const test = useRef<BottomSheetModal>(null);
+
   return (
-    <SafeAreaView>
+    <>
       <Container>
         <Avatar
           button="Manage profile"
@@ -45,9 +51,37 @@ const profile = () => {
             <VerticalCountrySelector countries={['SE', 'GB', 'PL', 'CA']} />
           </StatCategoryText>
         </View>
+
+        <View style={{ width: '100%' }}>
+          <ScrollView>
+            <ProfilePostEntry heading="Completing my Scandinavia trip in Stockholm" />
+            <ProfilePostEntry heading="Visiting the nordic reindeers up in Arvidsjaur!" />
+            <ProfilePostEntry heading="Arriving in Umeå!" />
+            <ProfilePostEntry heading="Arriving in Stockholm!" />
+          </ScrollView>
+        </View>
       </Container>
-    </SafeAreaView>
+
+      <IconButton
+        icon="pencil"
+        size={32}
+        onPress={() => {
+          test.current?.present();
+        }}
+        style={{
+          width: 64,
+          height: 64,
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          margin: 16,
+          zIndex: 99,
+        }}
+      />
+
+      <EditorModal ref={test} />
+    </>
   );
 };
 
-export default profile;
+export default Profile;

@@ -15,6 +15,7 @@ const _layout = () => {
       <Tabs
         sceneContainerStyle={{ backgroundColor: 'transparent' }}
         screenOptions={{
+          headerShadowVisible: false,
           headerShown: true,
           headerTitleStyle: { color: '#777', fontFamily: 'Jost_700Bold' },
           headerStyle: {

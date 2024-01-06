@@ -1,14 +1,15 @@
-import { Pressable, StyleProp, TextStyle } from 'react-native';
-import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Pressable, PressableProps, StyleProp, TextStyle } from 'react-native';
+import React, { ComponentProps } from 'react';
 import { merge } from 'lodash';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-interface IconButtonProps {
-  icon: string;
+interface IconButtonProps extends PressableProps {
+  icon: ComponentProps<typeof MaterialCommunityIcons>['name'];
+  size?: number;
   style?: StyleProp<TextStyle>;
 }
 
-const IconButton = ({ icon, style }: IconButtonProps) => {
+const IconButton = ({ icon, size, style, ...props }: IconButtonProps) => {
   const buttonStyle: StyleProp<TextStyle> = {
     backgroundColor: '#4865FF',
     borderRadius: 9999,
@@ -19,8 +20,8 @@ const IconButton = ({ icon, style }: IconButtonProps) => {
   };
 
   return (
-    <Pressable style={merge(buttonStyle, style)}>
-      <Icon name={icon} size={24} color="white" />
+    <Pressable style={merge(buttonStyle, style)} {...props}>
+      <MaterialCommunityIcons name={icon} size={size ?? 24} color="white" />
     </Pressable>
   );
 };

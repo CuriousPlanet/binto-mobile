@@ -9,6 +9,7 @@ const Container = ({ children }: PropsWithChildren) => {
         marginLeft: 'auto',
         marginRight: 'auto',
         alignItems: 'center',
+        height: '100%',
       }}
     >
       {children}

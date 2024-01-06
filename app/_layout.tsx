@@ -22,6 +22,7 @@ import {
   Jost_800ExtraBold_Italic,
   Jost_900Black_Italic,
 } from '@expo-google-fonts/jost';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -71,7 +72,9 @@ const RootLayout = () => {
 
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!}>
-      <InitialLayout />
+      <BottomSheetModalProvider>
+        <InitialLayout />
+      </BottomSheetModalProvider>
     </ClerkProvider>
   );
 };
