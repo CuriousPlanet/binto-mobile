@@ -11,7 +11,11 @@ import DiscordSVG from '../../../../assets/icons/discord.svg';
 const LoginForm = () => {
   return (
     <View style={{ width: '100%' }}>
-      <TextInput placeholder="Email" />
+      <TextInput
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        placeholder="Email"
+      />
       <TextButton style={{ marginTop: 12, marginBottom: 12 }}>
         Continue
       </TextButton>
