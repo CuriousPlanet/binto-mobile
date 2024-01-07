@@ -17,11 +17,14 @@ const TextInput = ({ label, style, ...props }: TextInputProps) => {
   const inputStyles: StyleProp<TextStyle> = {
     color: 'black',
     backgroundColor: 'white',
-    padding: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
     borderWidth: 1,
-    borderColor: '#777',
+    borderColor: '#CECECE',
     borderRadius: 8,
-    fontSize: 16,
+    fontSize: 14,
+    minHeight: 48,
+    fontFamily: 'Jost_700Bold',
   };
 
   const labelStyles: StyleProp<TextStyle> = {
@@ -29,7 +32,7 @@ const TextInput = ({ label, style, ...props }: TextInputProps) => {
   };
 
   return (
-    <View>
+    <View style={{ width: '100%' }}>
       {Boolean(label) && <Text style={labelStyles}>{label}</Text>}
       <BaseTextInput
         {...props}

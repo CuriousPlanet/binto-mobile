@@ -31,9 +31,9 @@ interface PostSequenceAttachment {
   source: string;
 }
 
-const index = () => {
+const Editor = () => {
   const [sequence, setSequence] = useState<(string | PostSequenceAttachment)[]>(
-    ['', { type: 'youtube', source: '0IShllkCHtY' }]
+    ['']
   );
 
   const refs = useRef([]);
@@ -259,4 +259,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Editor;

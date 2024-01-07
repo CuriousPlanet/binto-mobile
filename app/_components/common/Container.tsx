@@ -1,19 +1,21 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React, { PropsWithChildren } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Container = ({ children }: PropsWithChildren) => {
   return (
-    <View
+    <SafeAreaView
       style={{
-        width: '75%',
+        width: '85%',
         marginLeft: 'auto',
         marginRight: 'auto',
         alignItems: 'center',
         height: '100%',
+        flex: 1,
       }}
     >
       {children}
-    </View>
+    </SafeAreaView>
   );
 };
 
