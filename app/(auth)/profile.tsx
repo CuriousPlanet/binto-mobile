@@ -9,15 +9,16 @@ import IconButton from '../_components/common/Buttons/IconButton';
 import ProfilePostEntry from '../_components/ui/profile/ProfilePostEntry';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import EditorModal from '../_components/common/Modals/EditorModal';
-import useUserStore from '../_hooks/useUserStore';
+import useAppDataStore from '../_hooks/useAppDataStore';
 
 const Profile = () => {
-  const user = useUserStore();
+  const user = useAppDataStore();
   const editorModalRef = useRef<BottomSheetModal>(null);
 
   return (
     <>
-      <Container>
+      <Container center>
+        <Text onPress={() => user.setFirstName('')}>reset user</Text>
         <Avatar
           button="Manage profile"
           source={require('../../assets/avatar.png')}
@@ -29,7 +30,7 @@ const Profile = () => {
             fontFamily: 'Jost_600SemiBold',
           }}
         >
-          {user.firstName} {user.lastName[0]}.
+          {user.firstName}
         </Text>
 
         <View
@@ -53,7 +54,7 @@ const Profile = () => {
           </StatCategoryText>
         </View>
 
-        <View style={{ width: '100%', flex: 1 }}>
+        <View>
           <ScrollView>
             <ProfilePostEntry heading="Completing my Scandinavia trip in Stockholm" />
             <ProfilePostEntry heading="Visiting the nordic reindeers up in Arvidsjaur!" />

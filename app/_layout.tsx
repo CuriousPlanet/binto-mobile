@@ -23,13 +23,13 @@ import {
   Jost_900Black_Italic,
 } from '@expo-google-fonts/jost';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import useUserStore from './_hooks/useUserStore';
+import useAppDataStore from './_hooks/useAppDataStore';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const InitialLayout = () => {
   const { isLoaded, isSignedIn } = useAuth();
-  const user = useUserStore();
+  const user = useAppDataStore();
   const segments = useSegments();
   const router = useRouter();
 
@@ -40,6 +40,8 @@ const InitialLayout = () => {
 
     if (user.firstName === '') {
       router.replace('/login');
+    } else {
+      router.replace('/profile');
     }
 
     // if (isSignedIn && !inTabsGroup) {
@@ -47,7 +49,7 @@ const InitialLayout = () => {
     // } else if (!isSignedIn) {
     //   router.replace('/login');
     // }
-  }, [isSignedIn]);
+  }, [isSignedIn, user.firstName]);
 
   return <Slot />;
 };

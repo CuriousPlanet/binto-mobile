@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 import VerticalEqualWidthGrid from '../../common/VerticalEqualWidthGrid';
 import TextButton from '../../common/Buttons/TextButton';
@@ -16,6 +16,7 @@ const LoginForm = () => {
         textContentType="emailAddress"
         placeholder="Email"
       />
+
       <TextButton style={{ marginTop: 12, marginBottom: 12 }}>
         Continue
       </TextButton>
@@ -33,6 +34,21 @@ const LoginForm = () => {
         <OAuthMethodButton icon={GoogleSVG} />
         <OAuthMethodButton icon={DiscordSVG} />
       </VerticalEqualWidthGrid>
+
+      <Text
+        style={{
+          color: '#CDCDCD',
+          marginTop: 32,
+          textAlign: 'center',
+          fontSize: 11,
+        }}
+      >
+        By registering an account you agree to our{' '}
+        <Text style={{ textDecorationLine: 'underline' }}>
+          terms of service
+        </Text>
+        .
+      </Text>
     </View>
   );
 };
